@@ -1,0 +1,48 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+}
+
+.div-01 {
+    background-color: red;
+    width: 35%;
+    margin-left: 10%;
+    float: left;
+    overflow: hidden;
+}
+
+    .div-01 .button-01 {
+        width: 48px;
+        padding-top: 5px;
+        padding-right: 5px;
+        border-style: none;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background-color: red;
+    }
+
+    .div-01 .search-01 {
+        width: 300px;
+        border-style: none;
+        border-radius: 8px;
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 0%;
+        padding: 7px;
+    }
+
+.input-group span {
+    color: white;
+}
+
+.div-02, .div-03, .div-04 {
+    float: left;
+    width: 10%;
+    background-color: red;
+}

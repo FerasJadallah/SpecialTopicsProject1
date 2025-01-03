@@ -1,0 +1,84 @@
+﻿<style>
+    .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+        .about-container h1 {
+            font-size: 36px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .about-container p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+            padding-left: 20px;
+            position: relative;
+        }
+
+            .about-container p::first-letter {
+                font-size: 36px;
+                color: #3498db;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            .about-container p::before {
+                content: "";
+                width: 8px;
+                height: 100%;
+                background-color: #2ecc71;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 5px;
+            }
+    .button-group {
+        margin-top: 30px;
+        text-align: center;
+        margin-bottom: 10px;
+        background-color: #3498db; /* Bluish color */
+        color: #fff; /* White text */
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        background-color: #2980b9;
+    }
+
+        .button-group a:hover {
+            background-color: #1a5276; /* Darker shade on hover */
+        }
+</style>
+
+<div class="about-container">
+    <h1>ABOUT THE WEBSITE</h1>
+    <p>Welcome to Vexafile, the cutting-edge solution for decentralized document management. Vexafile leverages the power of the Ethereum blockchain and the InterPlanetary File System (IPFS) to transform the way you store, share, and manage your documents. With Vexafile, you can securely upload and download documents with the confidence that your data is protected and always accessible.</p>
+
+    <p>In today's digital age, data security and privacy are more important than ever. Vexafile addresses these concerns by utilizing blockchain technology to provide an immutable, transparent record of all transactions, ensuring your documents are safe from tampering and unauthorized access. Our integration with IPFS ensures your files are distributed across a global network, enhancing their resilience and availability.</p>
+
+    <p>Embrace the future of document management with Vexafile. Our platform offers unparalleled security, seamless accessibility, and the peace of mind that your documents are stored with the highest level of integrity and protection. Join us in revolutionizing the way you manage your documents, and experience the benefits of a truly decentralized system.</p>
+    <div class="button-group">
+        <div>
+            To Change Settings
+            <a href="@Url.Action("Setting", "Home")" class="btn">Settings</a>
+        </div>
+        <div>
+            To Upload and Download Files
+            <a href="@Url.Action("FileList", "Home")" class="btn">Documents</a>
+        </div>
+        <div>
+            To Log In
+            <a href="@Url.Action("Login", "Home")" class="btn">Login</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+﻿@if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+{
+    <li><a href="@Url.Action("Logout", "Home")">Logout</a></li>
+}
+else
+{
+    <li><a href="@Url.Action("Login", "Home")">Login</a></li>
+}

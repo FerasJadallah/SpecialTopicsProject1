@@ -1,0 +1,58 @@
+﻿@*@{
+        ViewBag.Title = "Setting";
+    }
+
+    <h2>Setting</h2>*@
+
+@{
+    ViewBag.Title = "Documents";
+}
+
+<h2>Documents</h2>
+
+<!-- File upload form -->
+<form action="/Document/Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="PdfData" />
+    <input type="submit" value="Upload" />
+</form>
+
+<div id="documents">
+    <!-- The document names or IDs will be inserted here by the AJAX call -->
+</div>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // AJAX call to get the documents
+            $.ajax({
+                url: '/Documents/GetDocuments',
+                type: 'GET',
+                success: function (data) {
+                    // data contains the IPFS hash of the document
+                    // Use this hash to retrieve the document name or ID from IPFS and display it
+                    $('#documents').append('<p>' + data.IpfsHash + '</p>');
+                }
+            });
+
+            // AJAX call to handle the file upload form submission
+            $('form').on('submit', function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/Documents/Upload',
+                    type: 'POST',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        // data contains the IPFS hash and the transaction hash of the uploaded document
+                        // Use this data to update the display of document names or IDs
+                        $('#documents').append('<p>' + data.IpfsHash + '</p>');
+                    }
+                });
+            });
+        });
+    </script>
+}
+

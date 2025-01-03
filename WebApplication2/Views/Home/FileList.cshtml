@@ -1,0 +1,398 @@
+﻿@using WebApplication2.Models
+
+@model List<FileViewModel>
+@Styles.Render("~/Index/css")
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: white;
+        margin: 0;
+    }
+
+    .div {
+        margin-top: 0%;
+        margin-bottom: 0%;
+    }
+
+    .div-01 {
+        width: 35%;
+        margin-left: 10%;
+        float: left;
+        overflow: hidden;
+        padding-top: 6px;
+    }
+
+        .div-01 .button-01 {
+            height: 45px;
+            width: 48px;
+            padding-top: 5px;
+            padding-right: 5px;
+            border-style: none;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background-color: #02011E;
+        }
+
+        .div-01 .search-01 {
+            height: 45px;
+            width: 380px;
+            border-style: double;
+            border-radius: 8px;
+            border-top-right-radius: 0%;
+            border-bottom-right-radius: 0%;
+            padding: 7px;
+        }
+
+    .input-group span {
+        color: white;
+    }
+
+    .div-02,
+    .div-03,
+    .div-04 {
+        float: left;
+        width: 15%;
+        padding: 7px;
+    }
+
+    .select-menu {
+        width: 15%;
+    }
+
+        .select-menu .select-btn {
+            display: flex;
+            height: 45px;
+            background: #fff;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            border-radius: 8px;
+            align-items: center;
+            cursor: pointer;
+            justify-content: space-between;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+    .select-btn i {
+        font-size: 25px;
+    }
+
+    .select-menu.active .select-btn i {
+        transform: rotate(-180deg);
+    }
+
+    .select-menu .options {
+        position: relative;
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 0 3px rgba(0,0,0,0.1);
+        display: none;
+    }
+
+    .select-menu.active .options {
+        display: block;
+    }
+
+    .options .option {
+        display: flex;
+        height: 55px;
+        cursor: pointer;
+        padding: 0 16px;
+        border-radius: 8px;
+        align-items: center;
+        background: #fff;
+    }
+
+        .options .option:hover {
+            background: #F2F2F2;
+        }
+
+    .option i {
+        font-size: 25px;
+        margin-right: 12px;
+    }
+
+    .option .option-text {
+        font-size: 18px;
+        color: #333;
+    }
+
+    .fortitle {
+        text-align: center;
+    }
+
+    table {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 2%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-family: Arial, sans-serif;
+    }
+
+
+    th {
+        background-color: #02011E;
+        color: white;
+        font-weight: bold;
+        text-align: left;
+        padding: 12px;
+    }
+
+
+    td {
+        border-bottom: 1px solid #ddd;
+        padding: 12px;
+    }
+
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .upload-container {
+        margin-top: 60px;
+        margin-left: 10%;
+        width: 80%;
+    }
+
+        .upload-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .upload-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .upload-container input[type="file"],
+        .upload-container input[type="text"],
+        .upload-container input[type="number"],
+        .upload-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .upload-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 2%;
+        }
+
+            .upload-container input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+    download-container {
+        margin-top: 60px;
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    .download-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        margin-left: 10%;
+    }
+
+    .download-container label {
+        display: block;
+        margin-bottom: 8px;
+        margin-left: 10%;
+    }
+
+    .download-container input[type="text"],
+    .download-container input[type="submit"] {
+        width: 80%;
+        padding: 10px;
+        margin-bottom: 15px;
+        margin-left: 10%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .download-container input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 5%;
+    }
+
+        .download-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    .forAleen {
+        margin-top: 5%;
+    }
+</style>
+
+
+
+
+
+<div class="forAleen">
+    <div class="div-01">
+        <div class="input-group ">
+            <form>
+                <input type="search" class="form-control search-01" placeholder="Serach Documents..">
+            </form>
+            <button class="button-01">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+        </div>
+    </div>
+    <div class=" div-02 select-menu">
+        <div class="select-btn">
+            <span class="sBtn-text">Select </span>
+            <i class="bx bx-chevron-down"></i>
+        </div>
+        <ul class="options">
+            <li class="option">
+                <i class="bx bxl-github" style="color: #171515;"></i>
+                <span class="option-text">All Categories</span>
+            </li>
+            <li class="option">
+                <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
+                <span class="option-text">PDF</span>
+            </li>
+            <li class="option">
+                <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
+                <span class="option-text">EXE</span>
+            </li>
+        </ul>
+    </div>
+    <div class=" div-03 select-menu">
+        <div class="select-btn">
+            <span class="sBtn-text">Date </span>
+            <i class="bx bx-chevron-down"></i>
+        </div>
+        <ul class="options">
+            <li class="option">
+                <i class="bx bxl-github" style="color: #171515;"></i>
+                <span class="option-text">sad</span>
+            </li>
+            <li class="option">
+                <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
+                <span class="option-text">PDF</span>
+            </li>
+            <li class="option">
+                <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
+                <span class="option-text">EXE</span>
+            </li>
+        </ul>
+    </div>
+    <div class=" div-04 select-menu">
+        <div class="select-btn">
+            <span class="sBtn-text">Type</span>
+            <i class="bx bx-chevron-down"></i>
+        </div>
+        <ul class="options">
+            <li class="option">
+                <i class="bx bxl-github" style="color: #171515;"></i>
+                <span class="option-text">Type</span>
+            </li>
+            <li class="option">
+                <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
+                <span class="option-text">PDF</span>
+            </li>
+            <li class="option">
+                <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
+                <span class="option-text">EXE</span>
+            </li>
+        </ul>
+    </div>
+    <div style="clear:left;"></div>
+
+</div>
+
+
+
+
+
+<script>
+    // Select all select-menu elements
+    const optionMenus = document.querySelectorAll(".select-menu");
+
+    // Loop through each select-menu
+    optionMenus.forEach(optionMenu => {
+        // Select relevant elements within each select-menu
+        const selectBtn = optionMenu.querySelector(".select-btn");
+        const options = optionMenu.querySelectorAll(".option");
+        const sBtn_text = optionMenu.querySelector(".sBtn-text");
+
+        // Add click event listener to toggle active class on click
+        selectBtn.addEventListener("click", () => {
+            optionMenu.classList.toggle("active");
+        });
+
+        // Add click event listener to each option
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                let selectedOption = option.querySelector(".option-text").innerText;
+                sBtn_text.innerText = selectedOption;
+                optionMenu.classList.remove("active");
+            });
+        });
+    });
+</script>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">@TempData["Message"]</div>
+}
+<h1 class="fortitle" style="margin-top: 4%; color: #4CAF50; font-family: 'Arial', sans-serif; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-size: 50px;">Document List</h1>
+<table>
+    <tr>
+        <th>File Name</th>
+        <th>Ethereum Hash</th>
+        <th>Version</th>
+    </tr>
+    @foreach (var file in Model)
+    {
+        <tr>
+            <td>@file.FileName</td>
+            <td>@file.EthHash</td>
+            <td>@file.Version</td>
+        </tr>
+    }
+</table>
+<div class="upload-container">
+
+
+    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <label for="file">Upload a file:</label>
+        <input type="file" name="File" id="file" />
+        <label for="fileName">File Name:</label>
+        <input type="text" name="FileName" id="fileName" />
+        <input type="submit" value="Upload" />
+    }
+
+</div>
+<div class="download-container">
+    <h2>Download</h2>
+
+    @using (Html.BeginForm("Download", "Home", FormMethod.Get))
+    {
+        <label for="ethHash">Enter the Ethereum hash of the file:</label>
+        <input type="text" name="ethHash" id="ethHash" />
+        <input type="submit" value="Download" />
+    }
+</div>

@@ -1,0 +1,39 @@
+﻿@{
+    var loginFailure = ViewBag.LoginFailure;
+}
+
+@if (loginFailure != null && loginFailure)
+{
+    <script type="text/javascript">
+        alert('Login failed. Please check your username and password.');
+    </script>
+}
+
+
+<!DOCTYPE html>
+@Styles.Render("~/Login/css")
+
+<html lang="en">
+
+<body>
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        <div class="container">
+            <img src="~/Images/logo - Cropped.PNG" alt="Logo" class="logo">
+            <form class="login-form">
+                <div class="label-container">
+                    <label for="username">Student Number:</label>
+                </div>
+                <input type="text" id="username" name="username" required>
+                <div class="label-container">
+                    <label for="password">Password:</label>
+                </div>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" value="Login" class="login-btn">Login</button>
+            </form>
+
+        </div>
+    }
+</body>
+</html>

@@ -1,0 +1,124 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+}
+
+.div {
+    margin-top:0%;
+    margin-bottom:0%;
+}
+
+.div-01 {
+    width: 35%;
+    margin-left: 10%;
+    float: left;
+    overflow: hidden;
+    padding-top:6px;
+   
+}
+
+    .div-01 .button-01 {
+        height:45px;
+        width: 48px;
+        padding-top: 5px;
+        padding-right: 5px;
+        border-style: none;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        background-color: #02011E;
+    }
+
+    .div-01 .search-01 {
+        height: 45px;
+        width: 380px;
+        border-style: double;
+        border-radius: 8px;
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 0%;
+        /*padding: 7px;*/
+    }
+
+.input-group span {
+    color: white;
+}
+
+.div-02,
+.div-03,
+.div-04 {
+    float: left;
+    width: 15%;
+    /* padding: 7px;*/
+}
+
+.select-menu {
+    width: 15%;
+}
+
+    .select-menu .select-btn {
+        display: flex;
+        height: 45px;
+        background: #fff;
+        /*padding: 20px;*/
+        font-size: 18px;
+        font-weight: 400;
+        border-radius: 8px;
+        align-items: center;
+        cursor: pointer;
+        justify-content: space-between;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+.select-btn i {
+    font-size: 25px;
+}
+
+.select-menu.active .select-btn i {
+    transform: rotate(-180deg);
+}
+
+.select-menu .options {
+    position: relative;
+    /*padding: 20px;*/
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.select-menu.active .options {
+    display: block;
+}
+
+.options .option {
+    display: flex;
+    height: 55px;
+    cursor: pointer;
+    /*padding: 0 16px;*/
+    border-radius: 8px;
+    align-items: center;
+    background: #fff;
+}
+
+    .options .option:hover {
+        background: #F2F2F2;
+    }
+
+.option i {
+    font-size: 25px;
+    margin-right: 12px;
+}
+
+.option .option-text {
+    font-size: 18px;
+    color: #333;
+}
+.fortitle{
+    text-align: center;
+}
